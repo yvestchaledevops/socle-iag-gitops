@@ -38,3 +38,5 @@ proxy_config:
         aws_region_name: eu-west-3
   general_settings:
     master_key: os.environ/PROXY_MASTER_KEY
+  litellm_settings:
+    callbacks: ["prometheus"]
