@@ -30,14 +30,9 @@ litellm-helm:
 
   redis:
     enabled: true
-    master:
-      persistence:
-        enabled: false
 
   postgresql:
     primary:
-      persistence:
-        enabled: false
 
   proxy_config:
     model_list:
