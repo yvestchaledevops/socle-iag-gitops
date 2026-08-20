@@ -1,44 +1,40 @@
-litellm-helm:  
-  replicaCount: 1
+replicaCount: 1
 
-  image:
-    repository: ghcr.io/berriai/litellm-database
-    tag: main-stable
-    pullPolicy: IfNotPresent
+image:
+  repository: ghcr.io/berriai/litellm-database
+  tag: main-stable
+  pullPolicy: IfNotPresent
 
-  serviceAccount:
-    create: false
-    name: litellm-sa
+serviceAccount:
+  create: false
+  name: litellm-sa
 
-  masterkeySecretName: litellm-masterkey
-  masterkeySecretKey: masterkey
+masterkeySecretName: litellm-masterkey
+masterkeySecretKey: masterkey
 
-  resources:
-    requests:
-      cpu: 500m
-      memory: 2Gi
-    limits:
-      cpu: "1"
-      memory: 3Gi
+resources:
+  requests:
+    cpu: 500m
+    memory: 2Gi
+  limits:
+    cpu: "1"
+    memory: 3Gi
 
-  service:
-    type: ClusterIP
-    port: 4000
+service:
+  type: ClusterIP
+  port: 4000
 
-  db:
-    deployStandalone: true
+db:
+  deployStandalone: true
 
-  redis:
-    enabled: true
+redis:
+  enabled: true
 
-  postgresql:
-    primary:
-
-  proxy_config:
-    model_list:
-      - model_name: chat-eco
-        litellm_params:
-          model: bedrock/eu.anthropic.claude-3-haiku-20240307-v1:0
-          aws_region_name: eu-west-3
-    general_settings:
-      master_key: os.environ/PROXY_MASTER_KEY
+proxy_config:
+  model_list:
+    - model_name: chat-eco
+      litellm_params:
+        model: bedrock/eu.anthropic.claude-3-haiku-20240307-v1:0
+        aws_region_name: eu-west-3
+  general_settings:
+    master_key: os.environ/PROXY_MASTER_KEY
